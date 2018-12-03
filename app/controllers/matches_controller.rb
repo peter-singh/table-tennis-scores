@@ -24,7 +24,8 @@ class MatchesController < ApplicationController
   # POST /matches
   # POST /matches.json
   def create
-    @match = Match.new(match_params)
+    # @match = Match.new(match_params)
+    @match = MatchProcessor.new(match_params).process_match!
 
     respond_to do |format|
       if @match.save
@@ -69,6 +70,6 @@ class MatchesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def match_params
-      params.require(:match).permit(:user_1, :user_2, :user_1_score, :user_2_score, :time)
+      params.require(:match).permit(:user_1_email, :user_2_email, :user_1_score, :user_2_score, :time)
     end
 end
