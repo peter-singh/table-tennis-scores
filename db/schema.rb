@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_12_01_134226) do
+ActiveRecord::Schema.define(version: 2018_12_03_005526) do
+
+  create_table "matches", force: :cascade do |t|
+    t.integer "user_1"
+    t.integer "user_2"
+    t.integer "user_1_score"
+    t.integer "user_2_score"
+    t.datetime "time"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
